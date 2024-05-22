@@ -1,12 +1,12 @@
-<ul role="listbox" {{did-insert this.addHandlers}} {{will-destroy this.removeHandlers}} ...attributes>
+<ul role="listbox" {{did-insert this.addHandlers}} {{will-destroy this.removeHandlers}} aria-label={{@ariaLabel}} aria-labelledBy={{@ariaLabelledBy}}>
   {{#if @select.loading}}
     {{#if @loadingMessage}}
       <li class="ember-power-select-option ember-power-select-option--loading-message" role="option" aria-selected={{false}}>{{@loadingMessage}}</li>
     {{/if}}
   {{/if}}
-  {{#let 
-    (component (ensure-safe-component @groupComponent)) 
-    (component (ensure-safe-component @optionsComponent)) 
+  {{#let
+    (component (ensure-safe-component @groupComponent))
+    (component (ensure-safe-component @optionsComponent))
   as |Group Options|}}
     {{#each @options as |opt index|}}
       {{#if (ember-power-select-is-group opt)}}
@@ -19,6 +19,8 @@
             @groupComponent={{@groupComponent}}
             @extra={{@extra}}
             role="group"
+            @ariaLabel={{@ariaLabel}}
+            @ariaLabelledBy={{@ariaLabelledBy}}
             class="ember-power-select-options" as |option|>
             {{yield option @select}}
           </Options>
