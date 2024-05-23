@@ -288,8 +288,18 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   }
 
   @action
+  handleMousedown() : void {
+    const trigger = document.getElementById(this.args.triggerId);
+    trigger?.setAttribute('mousedown', 'true');
+  }
+
+  @action
   _open(event: FocusEvent): void {
-    debugger;
+    const trigger = document.getElementById(this.args.triggerId);
+    if (trigger?.getAttribute('mousedown') === 'true') {
+      trigger?.setAttribute('mousedown', 'false');
+      return;
+    }
     console.groupCollapsed('called _open');
     console.log('target gaining focuswithin', event.target);
     console.log('target losing focuswithin', event.relatedTarget);
