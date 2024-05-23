@@ -15,7 +15,7 @@ export function emberPowerSelectIsSelected([option, selected]: [any, any]/* , ha
     }
     return "false";
   } else {
-    return `${isEqual(option, selected)};`
+    return `${isEqual(option, selected)}`;
   }
 }
 
