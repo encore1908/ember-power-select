@@ -176,7 +176,7 @@
             id={{listboxId}}
             @ariaLabel={{@ariaLabel}}
             @ariaLabelledBy={{@ariaLabelledBy}}
-            @ariaSelected="{{ember-power-select-is-selected opt @selected}}"
+            @ariaSelected={{ember-power-select-is-selected opt @selected}}
             class="ember-power-select-options" as |option select|>
             {{yield option select}}
           </Options>
