@@ -294,11 +294,12 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
     console.log('target gaining focuswithin', event.target);
     console.log('target losing focuswithin', event.relatedTarget);
     console.log('activeElement', document.activeElement);
-    const triggerElement = document.getElementById(this.args.triggerId);
-    if (triggerElement?.contains(document.activeElement))  {
-      console.log('skipping _open, triggerElement contains activeElement');
-      return;
-    }
+    console.log('isActive', this.storedAPI.isActive);
+    // const triggerElement = document.getElementById(this.args.triggerId);
+    // if (triggerElement?.contains(document.activeElement))  {
+    //   console.log('skipping _open, triggerElement contains activeElement');
+    //   return;
+    // }
     if (!this.storedAPI.isOpen) {
       this.storedAPI.actions.open(event);
     }
@@ -311,6 +312,7 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
     console.log('target gaining focus', event.target);
     console.log('target losing focus', event.relatedTarget);
     console.log('activeElement', document.activeElement);
+    console.log('isActive', this.storedAPI.isActive);
     if (!this.isDestroying) {
       console.log('called handleFocus, destroy schedule block');
       scheduleOnce('actions', this, this._updateIsActive, true);
@@ -323,8 +325,11 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
 
   @action
   handleBlur(event: FocusEvent): void {
+    console.groupCollapsed('called handleBlur');
     if (!this.isDestroying) {
-      console.log('called handleBlur, destroy schedule block');
+      console.log('destroy schedule block');
+      console.log('isActive', this.storedAPI.isActive);
+      console.groupEnd()
 
       scheduleOnce('actions', this, this._updateIsActive, false);
     }
