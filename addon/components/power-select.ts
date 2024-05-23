@@ -269,12 +269,6 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   }
 
   @action
-  onFocusTrigger(e: FocusEvent) : void {
-    console.log('onFocusTrigger was called', this.args.triggerId);
-    console.log('event', e);
-  }
-
-  @action
   handleTriggerKeydown(e: KeyboardEvent) {
     if (this.args.onKeydown && this.args.onKeydown(this.storedAPI, e) === false) {
       e.stopImmediatePropagation();
@@ -301,6 +295,7 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
     if (this.args.onFocus) {
       this.args.onFocus(this.storedAPI, event);
     }
+    this.storedAPI.actions.open(e);
     console.log('handleFocus was called', this.args.triggerId);
   }
 
