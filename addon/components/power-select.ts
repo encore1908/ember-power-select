@@ -269,6 +269,12 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   }
 
   @action
+  onFocusTrigger(dropdown: Component, e: FocusEvent) : void {
+    console.log('dropdown', dropdown);
+    console.log('event', e);
+  }
+
+  @action
   handleTriggerKeydown(e: KeyboardEvent) {
     if (this.args.onKeydown && this.args.onKeydown(this.storedAPI, e) === false) {
       e.stopImmediatePropagation();
