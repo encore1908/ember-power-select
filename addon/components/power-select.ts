@@ -269,8 +269,8 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   }
 
   @action
-  onFocusTrigger(dropdown: Component, e: FocusEvent) : void {
-    console.log('dropdown', dropdown);
+  onFocusTrigger(e: FocusEvent) : void {
+    console.log('onFocusTrigger was called', this.args.triggerId);
     console.log('event', e);
   }
 
@@ -301,6 +301,7 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
     if (this.args.onFocus) {
       this.args.onFocus(this.storedAPI, event);
     }
+    console.log('handleFocus was called', this.args.triggerId);
   }
 
   @action
