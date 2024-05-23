@@ -288,6 +288,14 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   }
 
   @action
+  _open(event: FocusEvent): void {
+    if (!this.storedAPI.isOpen) {
+      this.storedAPI.actions.open(event);
+    }
+    console.log('called _open');
+  }
+
+  @action
   handleFocus(event: FocusEvent): void {
     if (!this.isDestroying) {
       scheduleOnce('actions', this, this._updateIsActive, true);
@@ -295,8 +303,6 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
     if (this.args.onFocus) {
       this.args.onFocus(this.storedAPI, event);
     }
-    this.storedAPI.actions.open(event);
-    console.log('handleFocus was called', this.args.triggerId);
   }
 
   @action

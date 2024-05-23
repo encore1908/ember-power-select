@@ -36,6 +36,7 @@
       {{did-update this._performSearch this.searchText}}
       {{on "keydown" this.handleTriggerKeydown}}
       {{on "focus" this.handleFocus}}
+      {{on "focusin" this._open}}
       {{on "blur" this.handleBlur}}
       class="ember-power-select-trigger {{@triggerClass}}{{if publicAPI.isActive " ember-power-select-trigger--active"}}"
       aria-activedescendant={{if dropdown.isOpen (unless @searchEnabled (concat publicAPI.uniqueId "-" this.highlightedIndex))}}
