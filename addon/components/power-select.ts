@@ -295,7 +295,7 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
     if (this.args.onFocus) {
       this.args.onFocus(this.storedAPI, event);
     }
-    this.storedAPI.actions.open(e);
+    this.storedAPI.actions.open(event);
     console.log('handleFocus was called', this.args.triggerId);
   }
 
