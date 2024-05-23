@@ -290,21 +290,26 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   @action
   _open(event: FocusEvent): void {
     debugger;
+    console.groupCollapsed('called _open');
+    console.log('target gaining focuswithin', event.target);
+    console.log('target losing focuswithin', event.relatedTarget);
+    console.log('activeElement', document.activeElement);
     const triggerElement = document.getElementById(this.args.triggerId);
     if (triggerElement?.contains(document.activeElement))  {
       console.log('skipping _open, triggerElement contains activeElement');
       return;
     }
-    console.log('called _open');
     if (!this.storedAPI.isOpen) {
       this.storedAPI.actions.open(event);
     }
-    console.log('called _open');
+    console.groupEnd()
   }
 
   @action
   handleFocus(event: FocusEvent): void {
-    console.log('called handleFocus');
+    console.groupCollapsed('called handleFocus');
+    console.log('target gaining focus', event.target);
+    console.log('target losing focus', event.relatedTarget);
     if (!this.isDestroying) {
       console.log('called handleFocus, destroy schedule block');
       scheduleOnce('actions', this, this._updateIsActive, true);
@@ -312,6 +317,7 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
     if (this.args.onFocus) {
       this.args.onFocus(this.storedAPI, event);
     }
+    console.groupEnd();
   }
 
   @action
