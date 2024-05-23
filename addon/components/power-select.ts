@@ -300,51 +300,24 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
       trigger?.setAttribute('mousedown', 'false');
       return;
     }
-    console.groupCollapsed('called _open');
-    console.log('target gaining focuswithin', event.target);
-    console.log('target losing focuswithin', event.relatedTarget);
-    console.log('activeElement', document.activeElement);
-    console.log('isActive', this.storedAPI.isActive);
-    console.log('isLoading', this.storedAPI.loading);
-    // const triggerElement = document.getElementById(this.args.triggerId);
-    // if (triggerElement?.contains(document.activeElement))  {
-    //   console.log('skipping _open, triggerElement contains activeElement');
-    //   return;
-    // }
     if (!this.storedAPI.isOpen) {
       this.storedAPI.actions.open(event);
     }
-    console.groupEnd()
   }
 
   @action
   handleFocus(event: FocusEvent): void {
-    console.groupCollapsed('called handleFocus');
-    console.log('target gaining focus', event.target);
-    console.log('target losing focus', event.relatedTarget);
-    console.log('activeElement', document.activeElement);
-    console.log('isActive', this.storedAPI.isActive);
-    console.log('loading', this.storedAPI.loading);
     if (!this.isDestroying) {
-      console.log('called handleFocus, destroy schedule block');
       scheduleOnce('actions', this, this._updateIsActive, true);
     }
     if (this.args.onFocus) {
       this.args.onFocus(this.storedAPI, event);
     }
-    console.groupEnd();
   }
 
   @action
   handleBlur(event: FocusEvent): void {
-    console.groupCollapsed('called handleBlur');
-    console.log('target gaining focus', event.relatedTarget);
-    console.log('target losing focus', event.target);
     if (!this.isDestroying) {
-      console.log('destroy schedule block');
-      console.log('isActive', this.storedAPI.isActive);
-      console.groupEnd()
-
       scheduleOnce('actions', this, this._updateIsActive, false);
     }
     if (this.args.onBlur) {
@@ -553,12 +526,10 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   }
 
   _handleKeyTab(select: Select, e: KeyboardEvent): void {
-    console.log('called handleKeyTab, closing dropdown');
     select.actions.close(e);
   }
 
   _handleKeyESC(select: Select, e: KeyboardEvent): void {
-    console.log('called handleKeyESC, closing dropdown now');
     select.actions.close(e);
   }
 
