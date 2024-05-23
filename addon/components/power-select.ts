@@ -289,7 +289,7 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
 
   @action
   _open(event: FocusEvent): void {
-    console.log('_open isActive', this.storedAPI.isActive);
+    debugger;
     const triggerElement = document.getElementById(this.args.triggerId);
     if (triggerElement?.contains(document.activeElement))  {
       console.log('skipping _open, triggerElement contains activeElement');
