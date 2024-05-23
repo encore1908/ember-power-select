@@ -289,6 +289,7 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
 
   @action
   _open(event: FocusEvent): void {
+    console.log('called _open');
     if (!this.storedAPI.isOpen) {
       this.storedAPI.actions.open(event);
     }
@@ -297,7 +298,9 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
 
   @action
   handleFocus(event: FocusEvent): void {
+    console.log('called handleFocus');
     if (!this.isDestroying) {
+      console.log('called handleFocus, destroy schedule block');
       scheduleOnce('actions', this, this._updateIsActive, true);
     }
     if (this.args.onFocus) {
@@ -308,6 +311,8 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   @action
   handleBlur(event: FocusEvent): void {
     if (!this.isDestroying) {
+      console.log('called handleBlur, destroy schedule block');
+
       scheduleOnce('actions', this, this._updateIsActive, false);
     }
     if (this.args.onBlur) {
@@ -516,10 +521,12 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
   }
 
   _handleKeyTab(select: Select, e: KeyboardEvent): void {
+    console.log('called handleKeyTab, closing dropdown');
     select.actions.close(e);
   }
 
   _handleKeyESC(select: Select, e: KeyboardEvent): void {
+    console.log('called handleKeyESC, closing dropdown now');
     select.actions.close(e);
   }
 

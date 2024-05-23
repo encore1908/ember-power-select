@@ -21,6 +21,7 @@ export default class BeforeOptions extends Component<Args> {
       return false;
     }
     if (e.keyCode === 13) {
+      console.log('called handleKeydown in beforeOptions, closing dropdown', e.key,);
       this.args.select.actions.close(e);
     }
   }
