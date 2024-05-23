@@ -310,6 +310,7 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
     console.groupCollapsed('called handleFocus');
     console.log('target gaining focus', event.target);
     console.log('target losing focus', event.relatedTarget);
+    console.log('activeElement', document.activeElement);
     if (!this.isDestroying) {
       console.log('called handleFocus, destroy schedule block');
       scheduleOnce('actions', this, this._updateIsActive, true);
