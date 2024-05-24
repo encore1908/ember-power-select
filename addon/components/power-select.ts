@@ -286,25 +286,6 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
       return this._routeKeydown(this.storedAPI, e);
     }
   }
-
-  @action
-  handleMousedown() : void {
-    const trigger = document.getElementById(this.args.triggerId);
-    trigger?.setAttribute('mousedown', 'true');
-  }
-
-  @action
-  _open(event: FocusEvent): void {
-    const trigger = document.getElementById(this.args.triggerId);
-    if (trigger?.getAttribute('mousedown') === 'true') {
-      trigger?.setAttribute('mousedown', 'false');
-      return;
-    }
-    if (!this.storedAPI.isOpen) {
-      this.storedAPI.actions.open(event);
-    }
-  }
-
   @action
   handleFocus(event: FocusEvent): void {
     if (!this.isDestroying) {
