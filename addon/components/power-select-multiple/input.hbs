@@ -4,7 +4,7 @@
   class="ember-power-select-trigger-multiple-input"
   aria-activedescendant={{if @select.isOpen @ariaActiveDescendant}}
   aria-haspopup="listbox"
-  aria-expanded={{if @select.isOpen "true" "false"}}
+  aria-expanded="{{if @select.isOpen 'true' 'false'}}"
   autocomplete="off"
   autocorrect="off"
   autocapitalize="off"
@@ -12,6 +12,7 @@
   id="ember-power-select-trigger-multiple-input-{{@select.uniqueId}}"
   aria-labelledby={{@ariaLabelledBy}}
   aria-label={{@ariaLabel}}
+  aria-autocomplete="list"
   value={{@select.searchText}}
   aria-controls={{if @select.isOpen @listboxId}}
   style={{this.triggerMultipleInputStyle}}

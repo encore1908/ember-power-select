@@ -8,6 +8,8 @@
       class="ember-power-select-search-input"
       value={{@select.searchText}}
       aria-activedescendant={{@ariaActiveDescendant}}
+      aria-autocomplete="list"
+      aria-expanded="{{if @select.isOpen 'true' 'false'}}"
       aria-controls={{@listboxId}}
       aria-haspopup="listbox"
       placeholder={{@searchPlaceholder}}

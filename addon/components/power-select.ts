@@ -286,7 +286,6 @@ export default class PowerSelect extends Component<PowerSelectArgs> {
       return this._routeKeydown(this.storedAPI, e);
     }
   }
-
   @action
   handleFocus(event: FocusEvent): void {
     if (!this.isDestroying) {
