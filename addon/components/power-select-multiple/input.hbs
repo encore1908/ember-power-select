@@ -4,14 +4,15 @@
   class="ember-power-select-trigger-multiple-input"
   aria-activedescendant={{if @select.isOpen @ariaActiveDescendant}}
   aria-haspopup="listbox"
-  aria-expanded={{if @select.isOpen "true" "false"}}
-  autocomplete="off"
+  aria-expanded="{{if @select.isOpen 'true' 'false'}}"
+  autocomplete="list"
   autocorrect="off"
   autocapitalize="off"
   spellcheck={{false}}
   id="ember-power-select-trigger-multiple-input-{{@select.uniqueId}}"
   aria-labelledby={{@ariaLabelledBy}}
   aria-label={{@ariaLabel}}
+  aria-autocomplete="list"
   value={{@select.searchText}}
   aria-controls={{if @select.isOpen @listboxId}}
   style={{this.triggerMultipleInputStyle}}
