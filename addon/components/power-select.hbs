@@ -167,6 +167,7 @@
           <Options
             @loadingMessage={{or @loadingMessage "Loading options..."}}
             @select={{publicAPI}}
+            @selected={{@selected}}
             @options={{publicAPI.results}}
             @groupIndex=""
             @optionsComponent={{Options}}
@@ -176,7 +177,6 @@
             id={{listboxId}}
             @ariaLabel={{@ariaLabel}}
             @ariaLabelledBy={{@ariaLabelledBy}}
-            @ariaSelected="{{ember-power-select-is-selected opt @selected}}"
             class="ember-power-select-options" as |option select|>
             {{yield option select}}
           </Options>

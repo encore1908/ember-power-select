@@ -17,12 +17,12 @@
           <Options
             @options={{opt.options}}
             @select={{@select}}
+            @selected={{@selected}}
             @groupIndex="{{@groupIndex}}{{index}}."
             @optionsComponent={{@optionsComponent}}
             @groupComponent={{@groupComponent}}
             @extra={{@extra}}
             role="group"
-            @ariaSelected={{@ariaSelected}}
             class="ember-power-select-options" as |option|>
             {{yield option @select}}
           </Options>
@@ -30,7 +30,7 @@
       {{else}}
         <li class="ember-power-select-option"
           id="{{@select.uniqueId}}-{{@groupIndex}}{{index}}"
-          aria-selected="{{@ariaSelected}}"
+          aria-selected="{{ember-power-select-is-selected opt @selected}}"
           aria-disabled={{if opt.disabled "true"}}
           aria-current="{{eq opt @select.highlighted}}"
           data-option-index="{{@groupIndex}}{{index}}"
